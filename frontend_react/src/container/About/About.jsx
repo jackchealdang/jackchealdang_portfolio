@@ -1,41 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-import { images } from "../../constants";
+import { AppWrap } from "../../wrapper";
 import "./About.scss";
-
-const abouts = [
-  {
-    title: "Web Development",
-    description: "I am a good web developer.",
-    imgUrl: images.about01,
-  },
-  {
-    title: "Web Design",
-    description: "I am a good web developer.",
-    imgUrl: images.about02,
-  },
-  {
-    title: "UI/UX",
-    description: "I am a good web developer.",
-    imgUrl: images.about03,
-  },
-  {
-    title: "Web Animations",
-    description: "I am a good web developer.",
-    imgUrl: images.about04,
-  },
-];
+import { urlFor, client } from "../../client";
 
 const About = () => {
+  // Setting up Sanity to dynamically set Abouts section
+  const [abouts, setAbouts] = useState([]);
+
+  useEffect(() => {
+    const query = '*[_type == "abouts"]';
+
+    client.fetch(query).then((data) => setAbouts(data));
+  }, []);
+
   return (
     <>
       <h2 className="head-text">
-        I Know That
-        <span>Good Design</span>
+        I Know That <span>Good Apps</span>
         <br />
-        means
-        <span>Good Business</span>
+        means <span>Good Business</span>
       </h2>
 
       <div className="app__profiles">
@@ -47,7 +32,7 @@ const About = () => {
             className="app__profile-item"
             key={about.title + index}
           >
-            <img src={about.imgUrl} alt={about.title} />
+            <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 20 }}>
               {about.title}
             </h2>
@@ -61,4 +46,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AppWrap(About, "about");
