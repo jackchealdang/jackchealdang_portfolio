@@ -75,7 +75,7 @@ const Skills = () => {
                       // float="true"
                       // effect="solid"
                       // arrowColor="#fff"
-                      // className="skills-tooltip"
+                      className="skills-tooltip"
                       // content={work.desc}
                     />
                   </>
