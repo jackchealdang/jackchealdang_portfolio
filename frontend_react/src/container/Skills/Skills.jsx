@@ -5,6 +5,7 @@ import { AppWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 
 import "./Skills.scss";
+import "react-tooltip/dist/react-tooltip.css";
 
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
@@ -62,6 +63,8 @@ const Skills = () => {
                       // Had to make changes from tutorial since Tooltip has updated from V4 to V5
                       data-tooltip-id={work.name}
                       data-tooltip-content={work.desc}
+                      // data-tooltip-float="true"
+                      // data-tooltip-place="top"
                       key={work.name}
                     >
                       <h4 className="bold-text">{work.name}</h4>
@@ -69,10 +72,10 @@ const Skills = () => {
                     </motion.div>
                     <Tooltip
                       id={work.name}
-                      float="true"
+                      // float="true"
                       // effect="solid"
-                      arrowColor="#fff"
-                      className="skills-tooltip"
+                      // arrowColor="#fff"
+                      // className="skills-tooltip"
                       // content={work.desc}
                     />
                   </>
