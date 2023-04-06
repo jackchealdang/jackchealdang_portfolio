@@ -56,7 +56,7 @@ const Footer = () => {
         <div className="app__footer-card">
           <img src={images.mobile} alt="mobile" />
           <a href="tel: +1 (682) 407-2325" className="p-text">
-            +1 (682) 407-2325"
+            +1 (682) 407-2325
           </a>
         </div>
       </div>
@@ -88,7 +88,7 @@ const Footer = () => {
               className="p-text"
               placeholder="Your Message"
               value={message}
-              name={message}
+              name="message"
               onChange={handleChangeInput}
             />
           </div>
