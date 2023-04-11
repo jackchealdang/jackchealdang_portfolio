@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsClipboard } from "react-icons/bs";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
@@ -13,6 +14,17 @@ const Footer = () => {
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const myPhoneNumber = "+1 (682) 407-2325";
+  const myEmail = "jackchealdang@gmail.com";
+
+  const copyPhone = () => {
+    navigator.clipboard.writeText(myPhoneNumber);
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(myEmail);
+  };
 
   // Pull values from formData
   const { name, email, message } = formData;
@@ -50,14 +62,24 @@ const Footer = () => {
         <div className="app__footer-card">
           <img src={images.email} alt="email" />
           <a href="mailto:jackchealdang@gmail.com" className="p-text">
-            jackchealdang@gmail.com
+            {myEmail}
           </a>
+          <button type="button" className="p-text" onClick={copyEmail}>
+            <div>
+              <BsClipboard />
+            </div>
+          </button>
         </div>
         <div className="app__footer-card">
           <img src={images.mobile} alt="mobile" />
           <a href="tel: +1 (682) 407-2325" className="p-text">
-            +1 (682) 407-2325
+            {myPhoneNumber}
           </a>
+          <button type="button" className="p-text" onClick={copyEmail}>
+            <div>
+              <BsClipboard />
+            </div>
+          </button>
         </div>
       </div>
 
@@ -67,7 +89,7 @@ const Footer = () => {
             <input
               className="p-text"
               type="text"
-              placeholder="Your Name"
+              placeholder="Name"
               name="name"
               value={name}
               onChange={handleChangeInput}
@@ -77,7 +99,7 @@ const Footer = () => {
             <input
               className="p-text"
               type="email"
-              placeholder="Your Email"
+              placeholder="Email"
               name="email"
               value={email}
               onChange={handleChangeInput}
@@ -86,7 +108,7 @@ const Footer = () => {
           <div>
             <textarea
               className="p-text"
-              placeholder="Your Message"
+              placeholder="Write a message to me!"
               value={message}
               name="message"
               onChange={handleChangeInput}
