@@ -43,7 +43,7 @@ const Header = () => {
             <span>👋</span>
             <div style={{ marginLeft: 20 }}>
               <p className="p-text">Hello, I'm</p>
-              <h1 className="head-text">Jackcheal</h1>
+              <h1 className="head-text">Jackcheal Dang</h1>
             </div>
           </div>
 
@@ -72,8 +72,10 @@ const Header = () => {
   );
 };
 
+// Wrap pages with Nav Bar, Copyright, Navigation Dots, and Social Media icons.
+// Inner wrap for motion animations.
 export default AppWrap(
   MotionWrap(Header, "app__header"),
-  "header",
-  "app__whitebg"
+  "home", // Anchor #name
+  "app__whitebg" // Page BG color
 );

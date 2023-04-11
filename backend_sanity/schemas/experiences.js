@@ -14,5 +14,14 @@ export default{
             type:'array',
             of:[{ type:'workExperience'}]
         },
+    ],
+    orderings:[
+        {
+            title: 'Work Year, Latest',
+            name: 'workYearDesc',
+            by:[
+                {field: 'year',direction:'desc'}
+            ]
+        }
     ]
 }
