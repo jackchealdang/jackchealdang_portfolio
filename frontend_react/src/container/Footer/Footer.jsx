@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BsClipboard } from "react-icons/bs";
+import { Tooltip } from "react-tooltip";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
@@ -14,16 +15,21 @@ const Footer = () => {
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [phoneTooltip, setPhoneTooltip] = useState("Copy phone");
+  const [emailTooltip, setEmailTooltip] = useState("Copy email");
 
   const myPhoneNumber = "+1 (682) 407-2325";
   const myEmail = "jackchealdang@gmail.com";
 
   const copyPhone = () => {
     navigator.clipboard.writeText(myPhoneNumber);
+    setPhoneTooltip("Copied!");
+    console.log(phoneTooltip);
   };
 
   const copyEmail = () => {
     navigator.clipboard.writeText(myEmail);
+    setEmailTooltip("Copied!");
   };
 
   // Pull values from formData
@@ -65,21 +71,26 @@ const Footer = () => {
             {myEmail}
           </a>
           <button type="button" className="p-text" onClick={copyEmail}>
-            <div>
+            <div
+              data-tooltip-id="copyEmailHover"
+              data-tooltip-content={emailTooltip}
+            >
               <BsClipboard />
             </div>
           </button>
+          <Tooltip id="copyEmailHover" />
         </div>
         <div className="app__footer-card">
           <img src={images.mobile} alt="mobile" />
           <a href="tel: +1 (682) 407-2325" className="p-text">
             {myPhoneNumber}
           </a>
-          <button type="button" className="p-text" onClick={copyEmail}>
-            <div>
+          <button type="button" className="p-text" onClick={copyPhone}>
+            <div data-tooltip-id="copyPhoneHover">
               <BsClipboard />
             </div>
           </button>
+          <Tooltip id="copyPhoneHover" content={phoneTooltip} />
         </div>
       </div>
 
