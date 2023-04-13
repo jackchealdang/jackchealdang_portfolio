@@ -35,6 +35,7 @@ const Skills = () => {
             <motion.div
               whileInView={{ opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
+              // whileHover={{ scale: 1.1 }}
               className="app__skills-item app__flex"
               key={skill.name}
             >
@@ -61,6 +62,7 @@ const Skills = () => {
                     <motion.div
                       whileInView={{ opacity: [0, 1] }}
                       transition={{ duration: 0.5 }}
+                      whileHover={{ scale: 1.025 }}
                       className="app__skills-exp-work app__flex"
                       // Had to make changes from tutorial since Tooltip has updated from V4 to V5
                       data-tooltip-id={work.name}
