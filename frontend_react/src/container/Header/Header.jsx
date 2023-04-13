@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { BsLinkedin, BsGithub, BsInstagram, BsGit } from "react-icons/bs";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { images } from "../../constants";
@@ -55,6 +56,20 @@ const Header = () => {
             </p>
           </div>
         </div>
+        {/* <div className="app__header-social app__flex">
+          <a href="https://linkedin.com/in/jackchealdang">
+            <div className="app__header-social-item app_flex">
+              <BsLinkedin />
+              <p className="p-text">Test</p>
+            </div>
+          </a>
+          <a href="https://github.com/jackchealdang">
+            <div className="app__header-social-item app_flex">
+              <BsGithub />
+              <p className="p-text">Test</p>
+            </div>
+          </a>
+        </div> */}
       </motion.div>
 
       {/* <motion.div

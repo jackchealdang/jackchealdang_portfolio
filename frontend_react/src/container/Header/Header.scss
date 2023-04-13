@@ -50,6 +50,32 @@
   }
 }
 
+.app__header-social {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: row;
+}
+
+.app__header-social-item {
+  border-radius: 15px;
+  padding: 0.5rem 2rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  flex-direction: row;
+  svg {
+    width: 50px;
+  }
+  p {
+    // padding: 1rem 2rem;
+    // width: 100%;
+    text-align: left;
+  }
+}
+
 .app__header-badge {
   width: 100%;
   display: flex;
