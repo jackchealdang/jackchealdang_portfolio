@@ -32,6 +32,11 @@ const Footer = () => {
     setEmailTooltip("Copied!");
   };
 
+  const resetCopyTooltip = () => {
+    setPhoneTooltip("Copy phone");
+    setEmailTooltip("Copy email");
+  };
+
   // Pull values from formData
   const { name, email, message } = formData;
 
@@ -78,7 +83,7 @@ const Footer = () => {
               <BsClipboard />
             </div>
           </button>
-          <Tooltip id="copyEmailHover" />
+          <Tooltip id="copyEmailHover" afterHide={resetCopyTooltip} />
         </div>
         <div className="app__footer-card">
           <img src={images.mobile} alt="mobile" />
@@ -90,7 +95,11 @@ const Footer = () => {
               <BsClipboard />
             </div>
           </button>
-          <Tooltip id="copyPhoneHover" content={phoneTooltip} />
+          <Tooltip
+            id="copyPhoneHover"
+            content={phoneTooltip}
+            afterHide={resetCopyTooltip}
+          />
         </div>
       </div>
 
