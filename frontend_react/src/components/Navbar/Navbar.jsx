@@ -7,6 +7,7 @@ import "./Navbar.scss";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+  const sections = ["home", "skills & experiences", "contact"];
 
   return (
     <nav className="app__navbar">
@@ -16,7 +17,7 @@ const Navbar = () => {
         </div>
       </a>
       <ul className="app__navbar-links">
-        {["home", "skills", "contact"].map((item) => (
+        {sections.map((item) => (
           <li className="app__flex p-text" key={`link-${item}`}>
             <div />
             <a href={`#${item}`}>{item}</a>
@@ -34,7 +35,7 @@ const Navbar = () => {
           >
             <HiX onClick={() => setToggle(false)} />
             <ul>
-              {["home", "skills", "contact"].map((item) => (
+              {sections.map((item) => (
                 <li key={item}>
                   <a href={`#${item}`} onClick={() => setToggle(false)}>
                     {item}

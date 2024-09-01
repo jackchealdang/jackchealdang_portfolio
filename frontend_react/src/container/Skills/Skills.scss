@@ -53,7 +53,6 @@
 
     img {
       width: 50%;
-      height: 50%;
     }
 
     &:hover {
@@ -92,8 +91,11 @@
   align-items: flex-start;
   flex-direction: column;
   background-color: #ffffff;
+  width: 100%;
   padding-left: 50px;
+  padding-right: 50px;
   padding-top: 30px;
+  padding-bottom: 30px;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 
@@ -136,18 +138,62 @@
       margin-top: 5px;
     }
   }
+
+  .app__skills-exp-work.open h4 {
+    color: var(--secondary-color);
+  }
+
+}
+
+.app__skills-exp-work-desc.open {
+  max-height: 100px;
+  overflow: hidden;
+
+  transition: max-height 0.3s ease-in-out;
+
+  p {
+    font-weight: 400;
+    color: var(--gray-color);
+  }
+}
+
+.app__skills-exp-work-desc.closed {
+  max-height: 0;
+  overflow: hidden;
+
+  transition: max-height 0.3s ease-in-out;
 }
 
 .app__skills-exp-year {
   margin-right: 3rem;
+  flex-basis: 30%;
 
   p {
     font-weight: 800;
     color: var(--secondary-color);
+    text-align: right;
   }
 
   @media screen and (max-width: 450px) {
     margin-right: 1rem;
+  }
+}
+
+.app__skills-exp-location {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+
+  i {
+    margin-right: 8px;
+  }
+
+  p {
+    font-weight: 400;
+  }
+
+  i, p {
+    color: var(--secondary-color-light);
   }
 }
 

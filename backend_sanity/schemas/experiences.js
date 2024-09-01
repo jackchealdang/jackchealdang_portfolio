@@ -9,6 +9,11 @@ export default{
             type:'string'
         },
         {
+            name:'location',
+            title:'Location',
+            type:'string'
+        },
+        {
             name:'works',
             title:'Works',
             type:'array',

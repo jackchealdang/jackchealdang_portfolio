@@ -10,11 +10,12 @@ import "react-tooltip/dist/react-tooltip.css";
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
+  const [activeItem, setActiveItem] = useState("Paycom");
 
   useEffect(() => {
     // Order or filter the fetched data
     const query = '*[_type == "experiences"] | order(year desc)';
-    const skillsQuery = '*[_type == "skills"]';
+    const skillsQuery = '*[_type == "skills"] | order(_updatedAt desc)';
 
     client.fetch(query).then((data) => {
       console.log(data);
@@ -54,6 +55,10 @@ const Skills = () => {
             <motion.div className="app__skills-exp-item" key={experience.year}>
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience.year}</p>
+                <div className="app__skills-exp-location">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p className="p-text">{experience.location}</p>
+                </div>
                 {/* {console.log(experience.year)} */}
               </div>
               <motion.div className="app__skills-exp-works">
@@ -63,25 +68,29 @@ const Skills = () => {
                       whileInView={{ opacity: [0, 1] }}
                       transition={{ duration: 0.5 }}
                       whileHover={{ scale: 1.025 }}
-                      className="app__skills-exp-work app__flex"
+                      className={`app__skills-exp-work app__flex ${activeItem === work.name ? "open" : "closed"}`}
                       // Had to make changes from tutorial since Tooltip has updated from V4 to V5
                       data-tooltip-id={work.name}
                       data-tooltip-content={work.desc}
                       // data-tooltip-float="true"
                       // data-tooltip-place="top"
                       key={work.name}
+                      onClick={() => {activeItem !== work.name ? setActiveItem(work.name) : setActiveItem("")}}
                     >
                       <h4 className="bold-text">{work.name}</h4>
                       <p className="p-text">{work.company}</p>
                     </motion.div>
-                    <Tooltip
+                    {/* <Tooltip
                       id={work.name}
                       // float="true"
                       // effect="solid"
                       // arrowColor="#fff"
                       className="skills-tooltip"
                       // content={work.desc}
-                    />
+                    /> */}
+                    <div className={`app__skills-exp-work-desc ${activeItem === work.name ? "open" : "closed"}`}>
+                      <p>{work.desc}</p>
+                    </div>
                   </>
                 ))}
               </motion.div>
@@ -95,6 +104,6 @@ const Skills = () => {
 
 export default AppWrap(
   MotionWrap(Skills, "app__skills"),
-  "skills",
+  "skills & experiences",
   "app__primarybg"
 );
