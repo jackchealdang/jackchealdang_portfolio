@@ -137,6 +137,10 @@
       color: var(--gray-color);
       margin-top: 5px;
     }
+
+    &:hover h4 {
+        color: var(--secondary-color);
+    }
   }
 
   .app__skills-exp-work.open h4 {

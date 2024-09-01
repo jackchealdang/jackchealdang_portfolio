@@ -10,7 +10,7 @@ import "react-tooltip/dist/react-tooltip.css";
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
-  const [activeItem, setActiveItem] = useState("Paycom");
+  const [activeItem, setActiveItem] = useState("0.0");
 
   useEffect(() => {
     // Order or filter the fetched data
@@ -51,7 +51,7 @@ const Skills = () => {
           ))}
         </motion.div>
         <motion.div className="app__skills-exp">
-          {experiences.map((experience) => (
+          {experiences.map((experience, expId) => (
             <motion.div className="app__skills-exp-item" key={experience.year}>
               <div className="app__skills-exp-year">
                 <p className="bold-text">{experience.year}</p>
@@ -62,20 +62,20 @@ const Skills = () => {
                 {/* {console.log(experience.year)} */}
               </div>
               <motion.div className="app__skills-exp-works">
-                {experience.works.map((work) => (
+                {experience.works.map((work, workId) => (
                   <>
                     <motion.div
                       whileInView={{ opacity: [0, 1] }}
                       transition={{ duration: 0.5 }}
                       whileHover={{ scale: 1.025 }}
-                      className={`app__skills-exp-work app__flex ${activeItem === work.name ? "open" : "closed"}`}
+                      className={`app__skills-exp-work app__flex ${activeItem === `${expId}.${workId}` ? "open" : "closed"}`}
                       // Had to make changes from tutorial since Tooltip has updated from V4 to V5
                       data-tooltip-id={work.name}
                       data-tooltip-content={work.desc}
                       // data-tooltip-float="true"
                       // data-tooltip-place="top"
                       key={work.name}
-                      onClick={() => {activeItem !== work.name ? setActiveItem(work.name) : setActiveItem("")}}
+                      onClick={() => {setActiveItem(`${expId}.${workId}`); console.log(activeItem)}}
                     >
                       <h4 className="bold-text">{work.name}</h4>
                       <p className="p-text">{work.company}</p>
@@ -88,7 +88,7 @@ const Skills = () => {
                       className="skills-tooltip"
                       // content={work.desc}
                     /> */}
-                    <div className={`app__skills-exp-work-desc ${activeItem === work.name ? "open" : "closed"}`}>
+                    <div className={`app__skills-exp-work-desc ${activeItem === `${expId}.${workId}` ? "open" : "closed"}`}>
                       <p>{work.desc}</p>
                     </div>
                   </>
